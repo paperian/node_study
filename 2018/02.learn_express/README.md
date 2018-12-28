@@ -27,6 +27,8 @@
 
 ## middleware
 - app.use() 사이에 들어가는 함수
+- 요청과 응답의 중간에 있다고 해서 middleware라 부름
+- 미들웨어를 통해서 기능을 추가하거나, 요청을 걸러내는 등의 일을 할 수 있음
 
 
 ## middleware의 next()
