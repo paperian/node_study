@@ -109,3 +109,24 @@ function findAndSaveUser(Users) {
 		});
 }
 ```
+
+- 그러면, Promise에 추가적인 매개변수는 어떻게 전달해? [참고자료](https://stackoverflow.com/questions/35318442/how-to-pass-parameter-to-a-promise-function)
+	- function으로 wrapping 한다
+	```js
+	const someFunction = (username, password) => {
+	  return new Promise((resolve, reject) => {
+	    /*stuff using username, password*/
+
+	    if ( /* everything turned out fine */ ) {
+	      resolve("Stuff worked!");
+	    } else {
+	      reject(Error("It broke"));
+	    }
+	  });
+	};
+	
+	// use
+	someModule.someFunction(username, password).then(uid => {
+	  /* stuff */
+	});
+	```
