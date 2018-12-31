@@ -49,8 +49,9 @@ router.post('/login', (req, res, next) => {
 				message: info.message, 
 			});
 		}
-		// - (passport.serializeUser 호출; passport/index.js)
-		return req.login(user, (loginError) => {
+		// {session:false} -> now passport do not try to serialize anything
+		// google: passportjs-custom-callback-and-set-session-to-false
+		return req.login(user, { session: false }, (loginError) => {
 			if (loginError) {
 				console.error(loginError);	
 				return next(loginError);
