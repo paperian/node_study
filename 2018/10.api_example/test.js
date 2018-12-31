@@ -8,7 +8,7 @@ const join_test = async () => {
 			nick: 'jeins',
 			password: 'mypassword',
 		});
-		console.log(resp);
+		console.log(resp.data);
 	} catch (error) {
 		console.error(error);	
 	}
@@ -23,12 +23,24 @@ const secure_test = async () => {
 			'http://localhost:3000/auth/secure_test', {
 				headers: { Authorization: 'bearer ' + accessToken },	
 			});
-		console.log(resp);
+		console.log(resp.data);
 	} catch (error) {
 		console.error(error);	
 	}
 };
 //secure_test();
+
+const profile_test = async () => {
+	try {
+		const resp = await axios.get(
+			'http://localhost:3000/profile', {
+				headers: { Authorization: 'bearer ' + accessToken },	
+			});
+		console.log(resp.data);
+	} catch (error) {
+		console.error(error);	
+	}
+};
 
 // login test
 const login_test = async () => {
@@ -37,13 +49,22 @@ const login_test = async () => {
 			email: 'jeinsong200@gmail.com',
 			password: 'mypassword',
 		});
-		console.log(resp);
+		console.log(resp.data);
 		accessToken = resp.data.accessToken;
-		console.log('token', accessToken);
 		secure_test();
+		profile_test();
 	} catch (error) {
 		console.error(error);	
 	}
 };
 login_test();
 
+const index_test = async () => {
+	try {
+		const resp = await axios.get('http://localhost:3000/');
+		console.log(resp.data);
+	} catch (error) {
+		console.error(error);	
+	}
+};
+index_test();
