@@ -13,7 +13,7 @@ const generateAccessToken = (userId) => {
 		expiresIn,
 		audience,
 		issuer,
-		subject: userId.toString(),
+		subject: userId.toString(), // 'sub'
 	});
 
 	return token;
@@ -24,7 +24,7 @@ exports.generateUserToken = (req, res)/* middleware */ => {
 	const accessToken = generateAccessToken(req.user.id); 
 	res.json({ 
 		code: 200,
-		message: 'token generated',
+		message: 'token has been generated',
 		accessToken,
 	});
 }

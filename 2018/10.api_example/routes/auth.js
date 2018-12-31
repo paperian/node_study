@@ -74,16 +74,27 @@ router.get('/kakao/callback',
 	}), 
 	generateUserToken);
 
+// TODO: google, facebook
 
 // TEST
 router.get('/secure_test',
 	passport.authenticate('jwt', { session: false }),
 	(req, res) => {
+		const { id, email, nick, provider } = req.user;
 		res.json({
 			code: 200,
 			message: 'secure test passed',
-			email: JSON.stringify(req.user.email),
+			user: JSON.stringify({ id, email, nick, provider }),
 		});	
 	});
+
+router.get('/insecure_test',
+	(req, res) => {
+		res.json({
+			code: 200,
+			message: 'insecure test passed',
+		});	
+	});
+
 
 module.exports = router;
