@@ -16,6 +16,7 @@ const join_test = async () => {
 //join_test();
 
 // secure test
+let accessToken; 
 const secure_test = async () => {
 	try {
 		const resp = await axios.get(
@@ -27,9 +28,9 @@ const secure_test = async () => {
 		console.error(error);	
 	}
 };
+//secure_test();
 
 // login test
-let accessToken; 
 const login_test = async () => {
 	try {
 		const resp = await axios.post('http://localhost:3000/auth/login', {

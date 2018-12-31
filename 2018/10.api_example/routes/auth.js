@@ -49,7 +49,6 @@ router.post('/login', (req, res, next) => {
 				message: info.message, 
 			});
 		}
-		// passport에 의해 추가된 login 메서드 
 		// - (passport.serializeUser 호출; passport/index.js)
 		return req.login(user, (loginError) => {
 			if (loginError) {
